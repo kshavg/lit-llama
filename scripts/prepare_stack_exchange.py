@@ -48,8 +48,8 @@ def prepare(
     )
     # Partition the dataset into train and test
     dataset = dataset.train_test_split(test_size=test_split_size, seed=seed)
-    train_set = dataset["train"][0:50000]
-    test_set = dataset["test"][0:2000]
+    train_set = dataset["train"]
+    test_set = dataset["test"]
 
 
     print(f"train has {len(train_set):,} samples")
