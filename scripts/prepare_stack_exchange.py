@@ -56,12 +56,32 @@ def prepare(
     print(f"val has {len(test_set):,} samples")
 
     print("Processing train split ...")
-    train_set = [prepare_sample(convert_stack_exchange_to_alpaca_format(sample), tokenizer, max_seq_length, mask_inputs) for sample in tqdm(train_set)]
+    train_set = []
+    for i,sample in tqdm(enumerate(train_set)):
+        try:
+            train_set.append(prepare_sample(convert_stack_exchange_to_alpaca_format(sample), tokenizer, max_seq_length, mask_inputs))
+        except:
+            pass
+
+        if i>50000:
+            break
+
     torch.save(train_set, destination_path.parent / "train.pt")
+    
 
     print("Processing test split ...")
-    test_set = [prepare_sample(convert_stack_exchange_to_alpaca_format(sample), tokenizer, max_seq_length, mask_inputs) for sample in tqdm(test_set)]
+    test_set = []
+    for i,sample in tqdm(enumerate(test_set)):
+        try:
+            test_set.append(prepare_sample(convert_stack_exchange_to_alpaca_format(sample), tokenizer, max_seq_length, mask_inputs))
+        except:
+            pass
+
+        if i>2000:
+            break
+    
     torch.save(test_set, destination_path.parent / "test.pt")
+
 
 
 def convert_stack_exchange_to_alpaca_format(input_x):
