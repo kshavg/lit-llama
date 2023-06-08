@@ -48,8 +48,8 @@ def prepare(
     )
     # Partition the dataset into train and test
     dataset = dataset.train_test_split(test_size=test_split_size, seed=seed)
-    train_set = dataset["train"]
-    test_set = dataset["test"]
+    _train_set = dataset["train"]
+    _test_set = dataset["test"]
 
 
     print(f"train has {len(train_set):,} samples")
@@ -57,12 +57,8 @@ def prepare(
 
     print("Processing train split ...")
     train_set = []
-    for i,sample in tqdm(enumerate(train_set)):
-        try:
-            train_set.append(prepare_sample(convert_stack_exchange_to_alpaca_format(sample), tokenizer, max_seq_length, mask_inputs))
-        except:
-            pass
-
+    for i,sample in tqdm(enumerate(_train_set)):
+        train_set.append(prepare_sample(convert_stack_exchange_to_alpaca_format(sample), tokenizer, max_seq_length, mask_inputs))
         if i>50000:
             break
 
@@ -71,12 +67,8 @@ def prepare(
 
     print("Processing test split ...")
     test_set = []
-    for i,sample in tqdm(enumerate(test_set)):
-        try:
-            test_set.append(prepare_sample(convert_stack_exchange_to_alpaca_format(sample), tokenizer, max_seq_length, mask_inputs))
-        except:
-            pass
-
+    for i,sample in tqdm(enumerate(_test_set)):
+        test_set.append(prepare_sample(convert_stack_exchange_to_alpaca_format(sample), tokenizer, max_seq_length, mask_inputs))
         if i>2000:
             break
     
