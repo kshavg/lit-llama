@@ -52,8 +52,8 @@ def prepare(
     _test_set = dataset["test"]
 
 
-    print(f"train has {len(train_set):,} samples")
-    print(f"val has {len(test_set):,} samples")
+    print(f"train has {len(_train_set):,} samples")
+    print(f"val has {len(_test_set):,} samples")
 
     print("Processing train split ...")
     train_set = []
