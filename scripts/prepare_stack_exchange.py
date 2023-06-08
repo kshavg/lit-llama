@@ -18,7 +18,7 @@ from datasets import load_dataset
 
 
 DATASET_NAME = "lvwerra/stack-exchange-paired"
-
+IGNORE_INDEX = -1
 
 def prepare(
     destination_path: Path = Path("data/stack_exchange"), 
@@ -66,7 +66,7 @@ def prepare(
         if i>50000:
             break
 
-    torch.save(train_set, destination_path.parent / "train.pt")
+    torch.save(train_set, destination_path / "train.pt")
     
 
     print("Processing test split ...")
@@ -80,7 +80,7 @@ def prepare(
         if i>2000:
             break
     
-    torch.save(test_set, destination_path.parent / "test.pt")
+    torch.save(test_set, destination_path / "test.pt")
 
 
 
