@@ -21,7 +21,7 @@ DATASET_NAME = "lvwerra/stack-exchange-paired"
 IGNORE_INDEX = -1
 
 def prepare(
-    destination_path: Path = Path("data/stack_exchange"), 
+    destination_path: Path = Path("data/stack_exchange_rm"), 
     tokenizer_path: Path = Path("checkpoints/lit-llama/tokenizer.model"),
     test_split_size: float = 0.005,
     max_seq_length: int = 256,
