@@ -117,7 +117,7 @@ class LLaMA(nn.Module):
 
         logits = self.lm_head(x)  # (b, t, vocab_size)
 
-        return logits
+        return x, logits
 
     @classmethod
     def from_name(cls, name: str) -> Self:
