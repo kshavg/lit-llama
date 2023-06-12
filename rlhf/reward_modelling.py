@@ -55,7 +55,7 @@ class RewardModel(nn.Module):
         self.score = nn.Linear(config.n_embd, num_labels, bias=False)
 
     def forward(self, input_ids, labels=None):
-        hidden_states, _ = self.transformer_model(input_ids)[0]
+        hidden_states, _ = self.transformer_model(input_ids)
         logits = self.score(hidden_states)
         return logits
 
