@@ -93,8 +93,11 @@ def main(
     model, optimizer = fabric.setup(model, optimizer)
     train(fabric, model, optimizer, train_data, val_data, tokenizer_path, out_dir)
 
+    for n, p in model.score.named_parameters():
+        p.requires_grad=True
+        
     # Save the final LoRA checkpoint at the end of training
-    checkpoint = lora_state_dict(model)
+    checkpoint = model.state_dict()
     fabric.save(os.path.join(out_dir, "lit-llama-lora-rm-finetuned.pth"), checkpoint)
 
 
