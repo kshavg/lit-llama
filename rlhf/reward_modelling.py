@@ -63,7 +63,7 @@ class RewardModel(nn.Module):
 
 def main(
     data_dir: str = "data/alpaca", 
-    pretrained_path: str = "checkpoints/lit-llama/7B/lit-llama.pth",
+    pretrained_path: str = "out/lora/stack_exchange/lit-llama-lora-finetuned-lora-merged-weights.pth",
     tokenizer_path: str = "checkpoints/lit-llama/tokenizer.model",
     out_dir: str = "out/lora/alpaca",
 ):
