@@ -59,8 +59,7 @@ def prepare(
     train_set = []
     for i,sample in tqdm(enumerate(_train_set)):
         train_set.append(prepare_sample(convert_stack_exchange_to_alpaca_format(sample), tokenizer, max_seq_length, mask_inputs))
-        # if i>50000:
-        if i>500:
+        if i>50000:
             break
 
     torch.save(train_set, destination_path / "train.pt")
@@ -70,8 +69,7 @@ def prepare(
     test_set = []
     for i,sample in tqdm(enumerate(_test_set)):
         test_set.append(prepare_sample(convert_stack_exchange_to_alpaca_format(sample), tokenizer, max_seq_length, mask_inputs))
-        # if i>2000:
-        if i>50:
+        if i>2000:
             break
     
     torch.save(test_set, destination_path / "test.pt")
