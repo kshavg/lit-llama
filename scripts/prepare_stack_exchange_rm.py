@@ -100,8 +100,11 @@ def prepare_sample(example: dict, tokenizer: Tokenizer, max_length: int, mask_in
 
 
                            
-    response_j = "Question: " + question + "\n\nAnswer: " + response_j,
-    response_k = "Question: " + question + "\n\nAnswer: " + response_k,
+    response_j = "Question: " + question + "\n\nAnswer: " + response_j
+    response_k = "Question: " + question + "\n\nAnswer: " + response_k
+
+    print(response_j, type(response_j))
+    print(response_k, type(response_k))
 
     encoded_response_j = tokenize(tokenizer, response_j, max_length=max_length, eos=False)
     encoded_response_k = tokenize(tokenizer, response_k, max_length=max_length, eos=False)
